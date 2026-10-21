@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #2b111a;
-  --ink: #f1e7d8;
-  --muted: #c3ad9d;
-  --accent: #c6a66b;
-  --line: #62404a;
-  --frame: #170d11;
-  --gold: #a98a54;
+  --paper: #4a101c;
+  --ink: #f8eadb;
+  --muted: #d5b8a9;
+  --accent: #d9b476;
+  --line: #8a4650;
+  --frame: #260b12;
+  --gold: #c59a5e;
 }
 
 * { box-sizing: border-box; }
@@ -39,4 +39,66 @@ button, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 640px) {
   .page-shell { width: calc(100% - 32px); }
   .display { font-size: clamp(3rem, 15vw, 5rem); }
+}
+
+/* Editorial hero: the painting dissolves into the page instead of sitting in a rigid frame. */
+.hero-section { isolation: isolate; overflow: hidden; }
+.hero-copy { align-self: center; }
+.hero-art { position: relative; display: block; width: 100%; min-height: 360px; height: clamp(360px, 47vw, 680px); overflow: visible; }
+.hero-art-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; mix-blend-mode: normal; -webkit-mask-image: radial-gradient(ellipse at 54% 50%, #000 52%, rgba(0,0,0,.88) 68%, transparent 100%); mask-image: radial-gradient(ellipse at 54% 50%, #000 52%, rgba(0,0,0,.88) 68%, transparent 100%); }
+.hero-art-caption { position: absolute; right: 2%; bottom: 6%; max-width: 190px; color: var(--accent); font-size: 13px; font-style: italic; letter-spacing: .04em; text-align: right; transform: rotate(-5deg); }
+.art-frame { padding: 0 !important; border: 0 !important; box-shadow: none !important; background: transparent !important; overflow: hidden; }
+.art-image { object-fit: contain; padding: 0; }
+.art-card .art-frame { background: rgba(255,255,255,.025) !important; }
+@media (max-width: 767px) {
+  .hero-section { gap: 0; }
+  .hero-art { min-height: 300px; height: 82vw; margin-top: -12px; }
+  .hero-art-caption { bottom: 4%; right: 3%; }
+}
+
+
+/* Richer red-burgundy paint atmosphere with subtle 2D brush texture.
+   Decorative texture is derived from Mariam's own grief-and-flowers painting. */
+body {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 14% 12%, rgba(153, 35, 49, .24), transparent 38%),
+    radial-gradient(ellipse at 84% 38%, rgba(115, 20, 38, .24), transparent 42%),
+    repeating-linear-gradient(112deg, rgba(255, 220, 200, .018) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(8deg, rgba(10, 0, 4, .035) 0 2px, transparent 2px 11px);
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -5% -2%;
+  pointer-events: none;
+  background-image: url('/artworks/grief-and-flowers.jpeg');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 115%;
+  opacity: .12;
+  filter: saturate(1.2) contrast(1.05);
+  -webkit-mask-image: linear-gradient(90deg, transparent 5%, #000 58%, #000 85%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 5%, #000 58%, #000 85%, transparent 100%);
+}
+.hero-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  opacity: .35;
+  background: repeating-linear-gradient(166deg, transparent 0 25px, rgba(219, 135, 104, .045) 26px 28px, transparent 29px 47px);
+  mix-blend-mode: screen;
+}
+#artworks {
+  background-image: linear-gradient(180deg, rgba(75, 10, 25, .16), rgba(27, 5, 13, .22));
+}
+.art-frame {
+  background: rgba(38, 7, 16, .18);
+  box-shadow: 0 12px 32px rgba(14, 0, 5, .22);
+}
+@media (max-width: 767px) {
+  .hero-section::before { background-size: auto 85%; background-position: center bottom; opacity: .09; }
 }
