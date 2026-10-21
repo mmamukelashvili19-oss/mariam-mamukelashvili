@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f7f3ec;
-  --ink: #24221f;
-  --muted: #79736c;
-  --accent: #b8785b;
-  --line: #ded7cd;
+  --paper: #2b111a;
+  --ink: #f1e7d8;
+  --muted: #c3ad9d;
+  --accent: #c6a66b;
+  --line: #62404a;
+  --frame: #170d11;
+  --gold: #a98a54;
 }
 
 * { box-sizing: border-box; }
@@ -18,17 +20,23 @@ body {
 }
 a { color: inherit; text-decoration: none; }
 button, a { -webkit-tap-highlight-color: transparent; }
-::selection { background: #e5c8b7; color: var(--ink); }
-.page-shell { width: min(1380px, calc(100% - 64px)); margin-inline: auto; }
+::selection { background: #c6a66b; color: #211016; }
+.page-shell { width: min(1440px, calc(100% - 72px)); margin-inline: auto; }
 .eyebrow { font-family: Arial, sans-serif; text-transform: uppercase; letter-spacing: .19em; font-size: 10px; }
 .display { font-size: clamp(3.2rem, 7vw, 7.2rem); line-height: .93; letter-spacing: -.055em; font-weight: 400; }
 .section-title { font-size: clamp(1.7rem, 3vw, 2.6rem); letter-spacing: -.035em; font-weight: 400; }
-.art-image { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
-.art-card:hover .art-image { transform: scale(1.035); }
-.art-frame { overflow: hidden; background: #e8dfd3; }
-.text-link { border-bottom: 1px solid var(--ink); padding-bottom: 5px; transition: opacity .2s ease; }
-.text-link:hover { opacity: .58; }
+.art-image { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform .55s ease; }
+.art-card:hover .art-image { transform: scale(1.025); }
+.art-frame {
+  overflow: hidden;
+  background: var(--frame);
+  border: 1px solid var(--gold);
+  box-shadow: inset 0 0 0 5px #2b171e, inset 0 0 0 6px #73583b, 0 10px 28px rgba(0,0,0,.24);
+}
+.text-link { border-bottom: 1px solid var(--accent); padding-bottom: 5px; transition: opacity .2s ease; }
+.text-link:hover { opacity: .65; }
+#artworks { background: linear-gradient(180deg, rgba(17,8,12,.16), rgba(17,8,12,.3)); }
 @media (max-width: 640px) {
-  .page-shell { width: calc(100% - 36px); }
+  .page-shell { width: calc(100% - 32px); }
   .display { font-size: clamp(3rem, 15vw, 5rem); }
 }

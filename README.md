@@ -3,7 +3,7 @@
 A multilingual artist portfolio in Georgian (`/ka`), English (`/en`) and French (`/fr`). Built with Next.js, React, Tailwind CSS, and Lucide icons.
 
 ## Before publishing
-1. Replace the placeholder contact email `contact@example.com` in `app/[locale]/page.tsx` with your real public contact email.
+1. Replace the placeholder contact email `mmamukelashvili19@gmail.com` in `app/[locale]/page.tsx` with your real public contact email.
 2. Replace the generic Instagram URL with your own artist profile.
 3. Review titles, dates, medium, and descriptions to make sure they match your final choices.
 
